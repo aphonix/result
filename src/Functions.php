@@ -2,8 +2,6 @@
 
 /**
  * Global helper functions for Rust-style Result handling.
- * * These functions act as a prelude, allowing you to create Ok and Err
- * variants without the 'new' keyword, mimicking Rust's enum constructors.
  */
 
 use Aphonix\Result\Ok;
@@ -16,7 +14,7 @@ if (!function_exists('Ok')) {
      * @param mixed $value The success value.
      * @return Ok
      */
-    function Ok($value)
+    function Ok($value): Ok
     {
         return new Ok($value);
     }
@@ -29,7 +27,7 @@ if (!function_exists('Err')) {
      * @param mixed $error The error cause/value.
      * @return Err
      */
-    function Err($error)
+    function Err($error): Err
     {
         return new Err($error);
     }

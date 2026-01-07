@@ -2,6 +2,8 @@
 
 namespace Aphonix\Result;
 
+use RuntimeException;
+
 /**
  * Err variant of Result.
  *
@@ -46,12 +48,12 @@ class Err extends Result
      * Always throws an exception because this is an Err variant.
      *
      * @return void
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function unwrap()
     {
         $message = is_scalar($this->error) ? (string)$this->error : gettype($this->error);
-        throw new \RuntimeException("called `Result::unwrap()` on an `Err` value: " . $message);
+        throw new RuntimeException("called `Result::unwrap()` on an `Err` value: " . $message);
     }
 
     /**
@@ -69,11 +71,11 @@ class Err extends Result
      *
      * @param string $msg
      * @return void
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function expect(string $msg)
     {
-        throw new \RuntimeException($msg . ": " . print_r($this->error, true));
+        throw new RuntimeException($msg . ": " . print_r($this->error, true));
     }
 
     /**

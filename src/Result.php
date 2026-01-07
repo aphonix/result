@@ -2,6 +2,8 @@
 
 namespace Aphonix\Result;
 
+use RuntimeException;
+
 /**
  * Result is a type used for returning and propagating errors.
  *
@@ -32,7 +34,7 @@ abstract class Result
      * Returns the contained Ok value.
      *
      * @return mixed
-     * @throws \RuntimeException if the value is an Err, with a panic message.
+     * @throws RuntimeException if the value is an Err, with a panic message.
      */
     abstract public function unwrap();
 
@@ -40,7 +42,7 @@ abstract class Result
      * Returns the contained Err value.
      *
      * @return mixed
-     * @throws \RuntimeException if the value is an Ok, with a panic message.
+     * @throws RuntimeException if the value is an Ok, with a panic message.
      */
     abstract public function unwrap_err();
 
@@ -49,7 +51,7 @@ abstract class Result
      *
      * @param string $msg The message to include in the exception if the result is Err.
      * @return mixed
-     * @throws \RuntimeException with the provided message if the result is Err.
+     * @throws RuntimeException with the provided message if the result is Err.
      */
     abstract public function expect(string $msg);
 
